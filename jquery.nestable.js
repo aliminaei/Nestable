@@ -453,6 +453,11 @@
              * move vertical
              */
             if (!mouse.dirAx || isNewRoot || isEmpty) {
+                //do not drop on the buttons!!
+                if(pointElRoot[0].id == "nestable2" || pointElRoot[0].id == "nestable3" || pointElRoot[0].id == "nestable4") {
+                    return;
+                }
+
                 // check if groups match if dragging over new root
                 if (isNewRoot && opt.group !== pointElRoot.data('nestable-group')) {
                     return;
