@@ -298,6 +298,30 @@
         {
             var el = this.dragEl.children(this.options.itemNodeName).first();
             el[0].parentNode.removeChild(el[0]);
+
+            if(el[0].classList.contains("darwinContainer")) {
+                var newId = "DC-" + new Date().getTime()
+                el[0].setAttribute("data-id", newId);
+                el[0].classList.remove("darwinContainer");
+                el[0].classList.remove("dd-nochildren");
+                el[0].classList.remove("clone");
+                el[0].innerHTML = '<div class="dd-handle dd3-handle"></div><div class="dd3-content">Container</div>';
+            }
+            if(el[0].classList.contains("darwinRTE")) {
+                var newId = "DR-" + new Date().getTime()
+                el[0].setAttribute("data-id", newId);
+                el[0].classList.remove("darwinRTE");
+                el[0].classList.remove("clone");
+                el[0].innerHTML = '<div class="dd-handle dd3-handle"></div><div class="dd3-content">RTE</div>';
+            }
+            if(el[0].classList.contains("darwinTC")) {
+                var newId = "DTC-" + new Date().getTime()
+                el[0].setAttribute("data-id", newId);
+                el[0].classList.remove("darwinTC");
+                el[0].classList.remove("clone");
+                el[0].innerHTML = '<div class="dd-handle dd3-handle"></div><div class="dd3-content">TestCase</div>';
+            }
+
             this.placeEl.replaceWith(el);
 
             this.dragEl.remove();
