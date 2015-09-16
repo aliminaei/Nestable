@@ -296,6 +296,7 @@
 
         dragStop: function(e)
         {
+            $("#nestable5").removeClass("deleteNode");
             var el = this.dragEl.children(this.options.itemNodeName).first();
             el[0].parentNode.removeChild(el[0]);
 
@@ -455,6 +456,11 @@
             if (!mouse.dirAx || isNewRoot || isEmpty) {
                 //do not drop on the buttons!!
                 if(pointElRoot[0].id == "nestable2" || pointElRoot[0].id == "nestable3" || pointElRoot[0].id == "nestable4") {
+                    return;
+                }
+
+                if(pointElRoot[0].id == "nestable5" && this.dragRootEl.attr("id") == "nestable") {
+                    pointElRoot[0].classList.add("deleteNode");
                     return;
                 }
 
